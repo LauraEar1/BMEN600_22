@@ -16,10 +16,13 @@ Our project aims to solve the issue of sleep disruption caused by respiratory co
 
 ### Candidate Project 2
 ### Research Question 
-We want to investigate the neural basis of sleep habits using physiological and behavioral information from the [pollard]() datasets
+We want to investigate whether an AI model trained on overnight sleep recordings from health adults in the [Sleep-EDF Database Expanded](https://physionet.org/content/sleep-edfx/1.0.0/) can identify disordered sleep in patients with sleep disorders, including REM sleep behaviour disorder, in the [CAP Sleep Database](https://physionet.org/content/capslpdb/1.0.0/), and which features aid that identification. 
+
 ### Biggest Uncertainty 
-Our biggest uncertainty is 
+Our biggest uncertainty is whether differences between the two datasets (recording setups and conditions, participant age, sleep-scoring conventions) will make sleep look abnormal for reasons unrelated to disease. 
+
 ### Biomedical Problem 
+Our project aims to address the under-recognition of sleep disorders and provide a faster way to flag atypical sleep for a clinicians review, helping to prioritize patients for further assessment. For REM sleep behaviour disorder specifically, which can be an early warning sign of neurodegenerative disease, this could guide preventative measures and or prompt further assessment. 
 
 ## How it works
 
