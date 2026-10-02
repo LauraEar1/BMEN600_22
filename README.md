@@ -1,6 +1,5 @@
 # BMEN600_22
 * This project is in progress, files will be added as work is completed
-* Will contains all materials needed to complete BMEN 600 final project for Group 22
 
 # Project Description
 
