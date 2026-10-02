@@ -1,0 +1,19 @@
+,,,,,,,,
+,AI Research Milestone Tracker — Sleep Disorders AI Modeling,,,,,,,
+,TOTAL MILESTONES,,COMPLETED,,IN PROGRESS,,OVERALL PROGRESS,
+,13,,0,,1,,0.0%,
+,,,,,,,,
+,Milestone ID,Milestone Deliverable,Project Phase,Lead,Status,Priority,Target Due Date,Scope & Details
+,M01,Github organization,Project Setup,Laura,In Progress,High,Friday October 2nd,"Repo configuration, README, access control, and branching guidelines"
+,M02,Defining a research question,Research Formulation,All,Not Started,High,,Scope core research problem and hypothesis for sleep disorder AI modeling
+,M03,Finding an appropriate dataset,Data Engineering,All,Not Started,High,,"Identify polysomnography / clinical sleep datasets (e.g. SHHS, PhysioNet)"
+,M04,Establish teamwork and project plan,Project Setup,All,Not Started,Medium,,"Define cadence, role division, milestones, and shared workstreams"
+,M05,Literature review,Research Formulation,Jawad,Not Started,High,,Survey recent literature on deep learning and machine learning in sleep staging
+,M06,Clarify gap in research and how our project fills that gap,Research Formulation,Jawad,Not Started,High,,"Articulate novelty, limitations of prior work, and our unique contribution"
+,M07,Introduction writing,Paper & Writing,Laura,Not Started,Medium,,"Draft problem context, clinical significance, and paper roadmap"
+,M08,Background and research gap writing,Paper & Writing,Selinam,Not Started,Medium,,Draft prior work overview and detailed thesis rationale
+,M09,Dataset and responsible use writing,Paper & Writing,Anushka,Not Started,Medium,,"Document data sources, preprocessing, patient privacy, and ethical compliance"
+,M10,Understanding of the field and established methods in AI modeling of sleep disorders.,Research Formulation,All,Not Started,High,,"Benchmark feature extraction, CNN/RNN/Transformer architectures in EEG/PSG"
+,M11,Analysis of dataset and preliminary run through of AI model (coding),Modeling & Evaluation,,Not Started,High,,"EDA, baseline pipeline setup, train/val/test split, and initial validation run"
+,M12,Proposed methods and evaluation writing,Paper & Writing,,Not Started,High,,"Draft model architecture, objective functions, baseline comparisons, and metrics"
+,M13,Midterm Research Plan - almost final draft of full write-up,Paper & Writing,All,Not Started,High,October 14th,All sections of the midterm research plan is completed. Individual sections have been reviewed prior to group meeting. 
