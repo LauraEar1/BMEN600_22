@@ -3,6 +3,8 @@
 
 # Project Description
 
+There is a fundamental feasibility issue with candidate problem 1 and 2 in that we struggle to identify the clinical relevance of our product. We will instead shift to AI monitoring and modulation of sleep quality, through EEG recordings and auditory evoked potentials. 
+
 ## Candidate Project 1
 ### Research Question
 We want to investigate the use of an AI model to predict sleep apnea in adults using a combination of physiological measures from the [Respiratory and pulse oximetry waveforms form healthy adults during simulated apnoea events](https://physionet.org/content/respiratory-oximetry-apnoea/1.0.0/) dataset. 
