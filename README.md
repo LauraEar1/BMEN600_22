@@ -9,6 +9,11 @@ There is a fundamental feasibility issue with candidate problem 1 and 2 in that 
 
 Can an AI model be trained to differentiate between different sleep pathologies using CAP frequencies in EEG sleep data
 
+## Dataset
+
+CAP Sleep Database
+(B Kemp, AH Zwinderman, B Tuk, HAC Kamphuisen, JJL Oberyé. Analysis of a sleep-dependent neuronal feedback loop: the slow-wave microcontinuity of the EEG. IEEE-BME 47(9):1185-1194 (2000).)
+
 ## Candidate Project 1
 ### Research Question
 We want to investigate the use of an AI model to predict sleep apnea in adults using a combination of physiological measures from the [Respiratory and pulse oximetry waveforms form healthy adults during simulated apnoea events](https://physionet.org/content/respiratory-oximetry-apnoea/1.0.0/) dataset. 
