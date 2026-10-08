@@ -7,7 +7,7 @@ There is a fundamental feasibility issue with candidate problem 1 and 2 in that 
 
 # Research Question
 
-Can an AI model be trained to differentiate between different sleep pathologies using CAP frequencies in EEG sleep data
+Can an AI model be trained to differentiate between sleep pathologies using CAP frequencies in EEG sleep data
 
 ## Dataset
 
