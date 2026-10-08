@@ -5,7 +5,7 @@
 
 There is a fundamental feasibility issue with candidate problem 1 and 2 in that we struggle to identify the clinical relevance of our product. We will instead shift to AI monitoring and modulation of sleep quality, through EEG recordings and auditory evoked potentials. 
 
-#Research Question
+# Research Question
 
 Can an AI model be trained to differentiate between different sleep pathologies using CAP frequencies in EEG sleep data
 
