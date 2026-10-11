@@ -1,9 +1,11 @@
-# BMEN600_22
-* This project is in progress, files will be added as work is completed
+# BMEN600_22 : How useful is CAP rate as a standalone measure of sleep instability? 
+
+ Cyclic alternating pattern (CAP) is a periodic EEG activity that occurs during sleep. Abnormal CAP rates have been used in sleep science as a measure of instable sleep and linked to a number of sleep disorders. The measurement of CAP rate historically has been performed by trained clinicians who review patients EEG data in 30 second epochs and systematically score each section as N1, N2, N3 REM or wake stages. The time spent in these stages is then used to calculate the CAP rate. The analysis of this overnight polysomnography (PSG) record is tedious and time consuming
 
 # Project Description
 
-There is a fundamental feasibility issue with candidate problem 1 and 2 in that we struggle to identify the clinical relevance of our product. We will instead shift to AI monitoring and modulation of sleep quality, through EEG recordings and auditory evoked potentials. 
+
+There is a fundamental feasibility issue with candidate problem 1 and 2 in that we struggle to identify the clinical relevance of our product. We will instead shift to AI monitoring and modulation of sleep quality, through EEG recordings and the computation of CAP rates. 
 
 # Research Question
 
