@@ -21,8 +21,9 @@ Our biggest uncertainty is in the quality of all physiological recordings throug
 Our investigation and subsequent software development aims to address clinician distrust towards automated sleep pathology diagnosis. We will do this by creating an AI model that can accurately predict sleep pathologies at a clinically acceptable level, improving on current EEG- and CAP-Rate based models. As AI classification accuracy and clinician trust increase our software can begin to replace clinicians in review of PSG recordings, reducing clinician workload significantly and freeing up time for patient interaction and other daily tasks. 
 
 ## Dataset
-CAP Sleep Database
-(B Kemp, AH Zwinderman, B Tuk, HAC Kamphuisen, JJL Oberyé. Analysis of a sleep-dependent neuronal feedback loop: the slow-wave microcontinuity of the EEG. IEEE-BME 47(9):1185-1194 (2000).)
+ [CAP Sleep Database](https://physionet.org/content/capslpdb/1.0.0/)
+
+Credit to: B Kemp, AH Zwinderman, B Tuk, HAC Kamphuisen, JJL Oberyé. Analysis of a sleep-dependent neuronal feedback loop: the slow-wave microcontinuity of the EEG. IEEE-BME 47(9):1185-1194 (2000).
 
 ## Team Contributions & Licensing
 This project was created in a collaborative work environment in order to fulfil the course requirements of BMEN 600 at the University of Calgary. Project formation and software development was complete by team members Laura Earl, Jawad Darwish, Anushka Basu, Selinam Fiadzo. 
