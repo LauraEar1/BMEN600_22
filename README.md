@@ -1,4 +1,4 @@
-# The more the merrier: Does the inclusion of additional physiological measures of sleep quality help or harm accuracy of EEG-based automated sleep-pathology classification? 
+# The More the Merrier: Does the Inclusion of Additional Physiological Measures of Sleep Quality Help or Harm Accuracy of EEG-Based Automated Sleep-Pathology Classification? 
 
  Cyclic alternating pattern (CAP) is a periodic EEG activity that occurs during sleep. Abnormal CAP rates have been used in sleep science as a measure of instable sleep and linked to a number of sleep disorders. The measurement of CAP rate historically has been performed by trained clinicians who review patients EEG data in 30 second epochs and systematically score each section as N1, N2, N3 REM or wake stages. The time spent in these stages is then used to calculate the CAP rate. The analysis of this overnight polysomnography (PSG) record is tedious and time consuming. AI models have been utilized to automate the CAP-scoring process however struggle to produce reliable and clinically acceptable levels of accuracy in their sleep pathology predictions. 
 
