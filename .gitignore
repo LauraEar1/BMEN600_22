@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environments
+.venv/
+venv/
+
+# Raw recordings and temporary downloads
+data/raw/*
+!data/raw/.gitkeep
+data/raw/_capsleep_tmp/
+data/annotations/*
+!data/annotations/.gitkeep
+
+# Generated datasets, checkpoints, QC, and model results
+results/*
+!results/.gitkeep
+
+# Editors and OS
+.vscode/
+.DS_Store
+Thumbs.db

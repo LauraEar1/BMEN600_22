@@ -1,0 +1,44 @@
+[cohort]
+manifest = "config/cohort_manifest.json"
+expected_records = 88
+labels = ["control", "nfle", "rbd", "plm"]
+
+[download]
+base_url = "https://physionet.org/files/capslpdb/1.0.0"
+minimum_free_gb = 5.0
+timeout_seconds = 120
+
+[processing]
+epoch_seconds = 30
+chunk_seconds = 300
+filter_edge_seconds = 10
+filter_order = 4
+flat_std_threshold = 1.0e-9
+maximum_nonfinite_fraction = 0.01
+maximum_flat_window_fraction = 0.50
+maximum_saturated_fraction = 0.05
+eeg_saturation_uv = 500.0
+eog_saturation_uv = 1000.0
+emg_saturation_uv = 5000.0
+ecg_saturation_mv = 10.0
+
+[filters.eeg]
+low_hz = 0.3
+high_hz = 35.0
+
+[filters.eog]
+low_hz = 0.1
+high_hz = 15.0
+
+[filters.emg]
+low_hz = 10.0
+high_hz = 100.0
+
+[filters.ecg]
+low_hz = 0.5
+high_hz = 40.0
+
+[model]
+folds = 5
+random_seed = 42
+trees = 500
