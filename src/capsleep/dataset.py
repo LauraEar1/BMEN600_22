@@ -41,7 +41,10 @@ def feature_columns(frame: pd.DataFrame, prefixes: tuple[str, ...]) -> list[str]
     ]
 
 
-def validate_modality_datasets(frame: pd.DataFrame) -> dict[str, list[str]]:
+def validate_modality_datasets(
+    frame: pd.DataFrame,
+    expected_class_counts: dict[str, int] = EXPECTED_CLASS_COUNTS,
+) -> dict[str, list[str]]:
     groups = {
         "eeg": ("eeg__",),
         "eeg_eog_emg": ("eeg__", "eog__", "emg__"),
@@ -61,10 +64,10 @@ def validate_modality_datasets(frame: pd.DataFrame) -> dict[str, list[str]]:
                 )
     row_ids = frame["record_id"].tolist()
     counts = frame["label"].value_counts().to_dict()
-    if len(row_ids) != 88 or counts != EXPECTED_CLASS_COUNTS:
+    if len(row_ids) != sum(expected_class_counts.values()) or counts != expected_class_counts:
         raise ValueError(
-            "All primary models require the verified 88-record cohort and class counts "
-            f"{EXPECTED_CLASS_COUNTS}; found {counts}"
+            "Primary models require the configured subject count and class counts "
+            f"{expected_class_counts}; found {counts}"
         )
     return results
 

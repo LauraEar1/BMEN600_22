@@ -50,6 +50,35 @@ def test_models_share_fold_assignments_and_metrics(tmp_path):
         assert len(result["models"][name]["confusion_matrix"]) == 4
 
 
+def test_84_record_cohort_uses_configured_counts_and_reports_fold_metrics(tmp_path):
+    frame = _cohort().iloc[list(range(12)) + list(range(16, 88))].reset_index(drop=True)
+    class_counts = {"control": 12, "nfle": 40, "rbd": 22, "plm": 10}
+
+    result = evaluate_primary_models(
+        frame,
+        tmp_path,
+        folds=5,
+        random_seed=42,
+        trees=2,
+        expected_class_counts=class_counts,
+        analysis_id="primary_physiology_84_v2",
+    )
+
+    folds = pd.read_csv(tmp_path / "fold_assignments.csv")
+    assert len(folds) == 84
+    assert result["analysis_id"] == "primary_physiology_84_v2"
+    for model_name in ("eeg", "eeg_eog_emg", "eeg_eog_emg_ecg"):
+        predictions = pd.read_csv(tmp_path / f"{model_name}_oof_predictions.csv")
+        assert predictions["fold"].tolist() == folds["fold"].tolist()
+        assert predictions["subject_id"].tolist() == folds["subject_id"].tolist()
+        assert len(result["models"][model_name]["fold_metrics"]) == 5
+        assert all(
+            "precision" in metrics and "recall" in metrics
+            for fold in result["models"][model_name]["fold_metrics"]
+            for metrics in fold["per_class"].values()
+        )
+
+
 def test_cap_experiment_compares_eeg_baseline_and_addition_on_same_folds(tmp_path):
     frame = _cohort()
     physiology = frame.drop(columns=["cap_rate_percent"])

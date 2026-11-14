@@ -1,8 +1,12 @@
 # CAP Sleep Database classification pipeline
 
 This repository contains a reproducible, subject-level pipeline for the CAP
-Sleep Database (PhysioNet version 1.0.0). It compares three Random Forest
-experiments on the same 88 recordings, labels, and cross-validation splits:
+Sleep Database (PhysioNet version 1.0.0). The original verified inventory has
+88 selected recordings. Versioned primary-analysis cohorts in
+`config/analysis_cohorts/` do not alter the source manifest. The current
+proposed cohort is `primary_physiology_84_v2.json`; its exclusions are
+documented. The three intended Random Forest experiments use the same
+eligible participants and cross-validation splits:
 
 1. EEG
 2. EEG + EMG + EOG
@@ -51,6 +55,9 @@ download. Existing/user-provided EDF files are never overwritten or removed.
 .\.venv\Scripts\python.exe -m capsleep.cli diagnose-annotations
 .\.venv\Scripts\python.exe -m capsleep.cli extract
 .\.venv\Scripts\python.exe -m capsleep.cli validate-schema
+.\.venv\Scripts\python.exe -m capsleep.cli validate-analysis-cohort --cohort config\analysis_cohorts\primary_physiology_84_v2.json
+.\.venv\Scripts\python.exe -m capsleep.cli train-analysis-cohort --cohort config\analysis_cohorts\primary_physiology_84_v2.json
+.\.venv\Scripts\python.exe -m capsleep.cli posthoc-primary
 .\.venv\Scripts\python.exe -m capsleep.cli train-primary
 .\.venv\Scripts\python.exe -m capsleep.cli analyze-cap
 .\.venv\Scripts\python.exe -m capsleep.cli train-cap
@@ -71,6 +78,9 @@ deleted, and only after the physiological checkpoint is safely written.
 The three models share one deterministic `StratifiedGroupKFold` split plan,
 with subject IDs as groups. Imputation is part of each fold's estimator and is
 fit on that fold's training data only. No feature selection is performed.
+Each analysis cohort is subject to its own checkpoint and modality eligibility
+preflight. It must report `eligible` before classification can proceed; a
+preflight failure is not permission to drop additional participants.
 
 ## Outputs and scientific safeguards
 
@@ -85,11 +95,31 @@ fit on that fold's training data only. No feature selection is performed.
   features for secondary analyses.
 - `results/qc/`: per-recording channel inventory, QC summaries, failures, and
   annotation alignment diagnostics.
+- `results/qc/<analysis_id>_preflight.json` and
+  `<analysis_id>_record_validation.csv`: provisional cohort
+  eligibility, window-count, duration, and aggregation checks.
+- `results/features/physiology_primary_<version>_candidate.csv.gz`: one
+  checkpoint-aggregated subject row per cohort participant; this is not an
+  approved model input unless the matching preflight reports `eligible`.
 - `results/checkpoints/records/`: per-recording subject and window checkpoints;
   `results/qc/extraction_failures.csv.gz` records failed attempts.
 - `results/models/primary/`: fold assignments, out-of-fold predictions,
   balanced accuracy, macro-F1, per-class metrics, and confusion matrices for
   all three modality sets.
+- `results/models/primary_physiology_84_v2/`: versioned v2 fold assignments,
+  fold-level metrics and out-of-fold predictions for the approved 84-subject
+  cohort, with reproducibility hashes in `metrics.json`.
+- `results/analysis/posthoc_primary_84_v2/`: isolated exploratory analyses
+  based on the saved v2 folds and out-of-fold predictions. The command checks
+  model alignment and reproduces the saved baseline predictions before
+  proceeding; it does not retrain or overwrite baseline result files. Outputs
+  include paired participant correctness and exact McNemar tables, paired
+  class-stratified subject-bootstrap intervals, missingness summaries, detailed
+  training-fold all-missing feature/imputation audits, train-only harmonized
+  feature sensitivity predictions, held-out grouped modality permutation
+  importance, acquisition metadata associations and metadata-only CV, figures,
+  and a reproducibility report. These analyses are exploratory, use no CAP
+  annotations, and are not a replacement for the prespecified primary results.
 - `results/models/cap/`: separate CAP-informed classification results.
 
 Each channel is read at its native EDF sampling rate. Filters are modality
@@ -101,10 +131,9 @@ machine-readable in `physiology_feature_schema.json`. Subject features are
 per-channel medians and interquartile ranges of non-flat, complete 30-second
 windows. Window rows remain separate for signal/QC review; they are not
 treated as independent samples for model evaluation. All three primary models
-must have the same 88 participants and labels.
-The verified header inventory shows that control `n16` has no recognized
-EOG, EMG, or ECG channels; those features remain missing for that participant
-and are imputed within the training fold rather than dropping the participant.
+must use the same participants and subject-level folds. Training-fold
+imputation does not replace the required availability of all modalities for
+every included recording.
 
 CAP rates are not reported until stage-annotation coverage, 30-second
 hypnogram alignment, CAP event bounds and labels, CAP-A durations, sequence
@@ -170,8 +199,11 @@ source-unit confirmation or a corrected source header; units are not inferred
 from signal amplitudes. Their failed channel-level QC is saved
 under `results/checkpoints/records/`, with the summary in
 `results/qc/extraction_failures.csv.gz`. The 85 successful recordings have
-per-record checkpoints, but full-cohort feature tables were intentionally not
-written and no primary classifier was trained.
+per-record checkpoints. Provisional cohort v1 identified `n16` as ineligible because it has EEG but
+no recognized EMG, EOG, or ECG. The approved v2 cohort explicitly excludes
+`n16` for that reason and uses class counts of 12 controls, 40 NFLE, 22 RBD,
+and 10 PLM. Its checkpoint preflight passed for all 84 participants; its
+primary evaluation is recorded separately from CAP analyses.
 
 ## Dataset citation
 

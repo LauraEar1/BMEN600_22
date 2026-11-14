@@ -51,8 +51,10 @@ def evaluate_primary_models(
     folds: int = 5,
     random_seed: int = 42,
     trees: int = 500,
+    expected_class_counts: dict[str, int] = EXPECTED_CLASS_COUNTS,
+    analysis_id: str = "primary_88",
 ) -> dict:
-    datasets = validate_modality_datasets(frame)
+    datasets = validate_modality_datasets(frame, expected_class_counts)
     labels = sorted(frame["label"].unique().tolist())
     splits = make_splits(frame, folds, random_seed)
     assignments = np.full(len(frame), -1, dtype=int)
@@ -68,7 +70,8 @@ def evaluate_primary_models(
     results = {}
     for model_name, columns in datasets.items():
         predictions = np.empty(len(frame), dtype=object)
-        for train, test in splits:
+        fold_metrics = []
+        for fold_index, (train, test) in enumerate(splits):
             estimator = make_pipeline(
                 SimpleImputer(strategy="median", keep_empty_features=True),
                 RandomForestClassifier(
@@ -79,7 +82,39 @@ def evaluate_primary_models(
                 ),
             )
             estimator.fit(frame.iloc[train][columns], frame.iloc[train]["label"])
-            predictions[test] = estimator.predict(frame.iloc[test][columns])
+            fold_predictions = estimator.predict(frame.iloc[test][columns])
+            predictions[test] = fold_predictions
+            fold_truth = frame.iloc[test]["label"].to_numpy()
+            fold_matrix = confusion_matrix(
+                fold_truth, fold_predictions, labels=labels
+            )
+            fold_report = classification_report(
+                fold_truth,
+                fold_predictions,
+                labels=labels,
+                output_dict=True,
+                zero_division=0,
+            )
+            fold_metrics.append({
+                "fold": fold_index,
+                "test_subject_count": len(test),
+                "test_class_counts": frame.iloc[test]["label"].value_counts().to_dict(),
+                "training_features_all_missing": int(
+                    frame.iloc[train][columns].isna().all(axis=0).sum()
+                ),
+                "balanced_accuracy": float(
+                    balanced_accuracy_score(fold_truth, fold_predictions)
+                ),
+                "macro_f1": float(
+                    f1_score(
+                        fold_truth, fold_predictions, labels=labels, average="macro"
+                    )
+                ),
+                "per_class": {
+                    label: fold_report[label] for label in labels
+                },
+                "confusion_matrix": fold_matrix.tolist(),
+            })
         truth = frame["label"].to_numpy()
         matrix = confusion_matrix(truth, predictions, labels=labels)
         report = classification_report(
@@ -87,15 +122,18 @@ def evaluate_primary_models(
         )
         results[model_name] = {
             "feature_count": len(columns),
+            "feature_columns": columns,
             "balanced_accuracy": float(balanced_accuracy_score(truth, predictions)),
             "macro_f1": float(f1_score(truth, predictions, labels=labels, average="macro")),
             "accuracy": float(accuracy_score(truth, predictions)),
             "per_class": {label: report[label] for label in labels},
             "confusion_matrix": matrix.tolist(),
             "confusion_matrix_labels": labels,
+            "fold_metrics": fold_metrics,
         }
         pd.DataFrame({
             "record_id": frame["record_id"],
+            "subject_id": frame["subject_id"],
             "label": truth,
             "prediction": predictions,
             "fold": assignments,
@@ -105,6 +143,7 @@ def evaluate_primary_models(
         )
     report = {
         "experiment": "primary_physiology_only",
+        "analysis_id": analysis_id,
         "participant_count": len(frame),
         "class_counts": frame["label"].value_counts().to_dict(),
         "folds": folds,
@@ -112,6 +151,12 @@ def evaluate_primary_models(
         "subject_grouped": True,
         "imputer": "median, fit within each training fold",
         "feature_selection": "none",
+        "hyperparameter_tuning": "none",
+        "evaluation_unit": "one subject-level row per recording",
+        "classifier": "RandomForestClassifier",
+        "n_estimators": trees,
+        "class_weight": "balanced_subsample",
+        "n_jobs": -1,
         "models": results,
         "software": {
             "python": platform.python_version(),

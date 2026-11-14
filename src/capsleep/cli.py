@@ -2,9 +2,12 @@ from __future__ import annotations
 
 import argparse
 import json
+from pathlib import Path
 
 from .cohort import verify_manifest
 from .config import load_settings
+from .analysis_cohort import train_analysis_cohort, validate_analysis_cohort
+from .posthoc import run_posthoc_primary
 from .pipeline import (
     analyze_cap,
     extract_cohort,
@@ -24,10 +27,16 @@ def main() -> None:
         choices=(
             "verify-cohort", "record-inventory", "extract", "validate-schema",
             "validate-annotations", "diagnose-annotations", "train-primary",
-            "analyze-cap", "train-cap",
+            "validate-analysis-cohort", "train-analysis-cohort",
+            "posthoc-primary", "analyze-cap", "train-cap",
         ),
     )
     parser.add_argument("--config", help="Pipeline TOML configuration path")
+    parser.add_argument(
+        "--cohort",
+        type=Path,
+        help="Versioned analysis cohort JSON (for analysis-cohort commands)",
+    )
     arguments = parser.parse_args()
     settings = load_settings(arguments.config)
     if arguments.command == "verify-cohort":
@@ -44,6 +53,12 @@ def main() -> None:
         result = diagnose_annotation_cohort(settings)
     elif arguments.command == "train-primary":
         result = train_primary(settings)
+    elif arguments.command == "validate-analysis-cohort":
+        result = validate_analysis_cohort(settings, arguments.cohort)
+    elif arguments.command == "train-analysis-cohort":
+        result = train_analysis_cohort(settings, arguments.cohort)
+    elif arguments.command == "posthoc-primary":
+        result = run_posthoc_primary(settings)
     elif arguments.command == "analyze-cap":
         result = analyze_cap(settings)
     else:
