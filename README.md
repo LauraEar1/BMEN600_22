@@ -58,6 +58,7 @@ download. Existing/user-provided EDF files are never overwritten or removed.
 .\.venv\Scripts\python.exe -m capsleep.cli validate-analysis-cohort --cohort config\analysis_cohorts\primary_physiology_84_v2.json
 .\.venv\Scripts\python.exe -m capsleep.cli train-analysis-cohort --cohort config\analysis_cohorts\primary_physiology_84_v2.json
 .\.venv\Scripts\python.exe -m capsleep.cli posthoc-primary
+.\.venv\Scripts\python.exe -m capsleep.cli report-figures
 .\.venv\Scripts\python.exe -m capsleep.cli train-primary
 .\.venv\Scripts\python.exe -m capsleep.cli analyze-cap
 .\.venv\Scripts\python.exe -m capsleep.cli train-cap
@@ -120,6 +121,14 @@ preflight failure is not permission to drop additional participants.
   importance, acquisition metadata associations and metadata-only CV, figures,
   and a reproducibility report. These analyses are exploratory, use no CAP
   annotations, and are not a replacement for the prespecified primary results.
+- `results/report_figures/`: read-only reporting outputs made from the saved
+  84-recording baseline and post-hoc files. Run
+  `python -m capsleep.cli report-figures` to validate participant/fold alignment,
+  metric and confusion-matrix consistency, and saved missingness; then export
+  Figures 1–6, captions, a source-hash manifest, and four CSV tables. Figures
+  are written as 300-DPI PNG, SVG, and PDF. No models are retrained and no
+  baseline results are modified. An Excel workbook is produced only when an
+  Excel writer dependency is available.
 - `results/models/cap/`: separate CAP-informed classification results.
 
 Each channel is read at its native EDF sampling rate. Filters are modality

@@ -8,6 +8,7 @@ from .cohort import verify_manifest
 from .config import load_settings
 from .analysis_cohort import train_analysis_cohort, validate_analysis_cohort
 from .posthoc import run_posthoc_primary
+from .report_figures import generate_report_figures
 from .pipeline import (
     analyze_cap,
     extract_cohort,
@@ -28,7 +29,7 @@ def main() -> None:
             "verify-cohort", "record-inventory", "extract", "validate-schema",
             "validate-annotations", "diagnose-annotations", "train-primary",
             "validate-analysis-cohort", "train-analysis-cohort",
-            "posthoc-primary", "analyze-cap", "train-cap",
+            "posthoc-primary", "report-figures", "analyze-cap", "train-cap",
         ),
     )
     parser.add_argument("--config", help="Pipeline TOML configuration path")
@@ -59,6 +60,8 @@ def main() -> None:
         result = train_analysis_cohort(settings, arguments.cohort)
     elif arguments.command == "posthoc-primary":
         result = run_posthoc_primary(settings)
+    elif arguments.command == "report-figures":
+        result = generate_report_figures(settings.root)
     elif arguments.command == "analyze-cap":
         result = analyze_cap(settings)
     else:

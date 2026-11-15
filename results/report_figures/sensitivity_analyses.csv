@@ -1,0 +1,7 @@
+model,metric,original_baseline,harmonized_sensitivity,signed_difference_sensitivity_minus_baseline,absolute_difference,analysis
+EEG,Balanced accuracy,0.7034090909090909,0.7034090909090909,0.0,0.0,Exploratory train-fold-only feature harmonization
+EEG,Macro-F1,0.730988455988456,0.730988455988456,0.0,0.0,Exploratory train-fold-only feature harmonization
+EEG + EMG + EOG,Balanced accuracy,0.7034090909090909,0.7492424242424243,0.04583333333333339,0.04583333333333339,Exploratory train-fold-only feature harmonization
+EEG + EMG + EOG,Macro-F1,0.730988455988456,0.7716821122573877,0.04069365626893173,0.04069365626893173,Exploratory train-fold-only feature harmonization
+EEG + EMG + EOG + ECG,Balanced accuracy,0.7742424242424243,0.7742424242424243,0.0,0.0,Exploratory train-fold-only feature harmonization
+EEG + EMG + EOG + ECG,Macro-F1,0.7913865546218487,0.7913865546218487,0.0,0.0,Exploratory train-fold-only feature harmonization
