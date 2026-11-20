@@ -1,0 +1,360 @@
+{
+  "analysis": "primary_physiology_84_v2_report_figures",
+  "status": "complete",
+  "primary_results_modified": false,
+  "models_retrained": false,
+  "feature_extraction_rerun": false,
+  "cohort_count": 84,
+  "class_counts": {
+    "nfle": 40,
+    "rbd": 22,
+    "control": 12,
+    "plm": 10
+  },
+  "figure_export_formats": {
+    "png": "300 DPI",
+    "svg": "editable vector",
+    "pdf": "publication insertion"
+  },
+  "figures": {
+    "figure_1_primary_model_performance": {
+      "outputs": [
+        "results\\report_figures\\figure_1_primary_model_performance.png",
+        "results\\report_figures\\figure_1_primary_model_performance.svg",
+        "results\\report_figures\\figure_1_primary_model_performance.pdf"
+      ],
+      "source_files": [
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\metrics.json",
+          "sha256": "5e0108075f31d38899dc6d1c7cc16f5f00298f477d2389de8d841c38699ec2e8"
+        },
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\fold_assignments.csv",
+          "sha256": "f28f13ba269a1fa228861fbafa0794a22eeee753e363e0d298e415d586062ddb"
+        },
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\eeg_oof_predictions.csv",
+          "sha256": "d22aa08413ab56100aa41728cf056ff82264427e39c3ab639f7f79e43650f19d"
+        },
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\eeg_eog_emg_oof_predictions.csv",
+          "sha256": "d22aa08413ab56100aa41728cf056ff82264427e39c3ab639f7f79e43650f19d"
+        },
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\eeg_eog_emg_ecg_oof_predictions.csv",
+          "sha256": "b3485141ca77cfbfeadda7dde2b83043b374f13796b01f61a03b7b6f06947203"
+        }
+      ]
+    },
+    "figure_2a_confusion_counts": {
+      "outputs": [
+        "results\\report_figures\\figure_2a_confusion_counts.png",
+        "results\\report_figures\\figure_2a_confusion_counts.svg",
+        "results\\report_figures\\figure_2a_confusion_counts.pdf"
+      ],
+      "source_files": [
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\eeg_confusion_matrix.csv",
+          "sha256": "0042f486e098903fba5b5a70ee265a430559f197a97bbb0a6c43a21138228e77"
+        },
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\eeg_eog_emg_confusion_matrix.csv",
+          "sha256": "0042f486e098903fba5b5a70ee265a430559f197a97bbb0a6c43a21138228e77"
+        },
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\eeg_eog_emg_ecg_confusion_matrix.csv",
+          "sha256": "c08aa20a5c189c93696b31a3c964ddbfdd22515e2999d930fc0cdd3fec014058"
+        }
+      ]
+    },
+    "figure_2b_confusion_row_normalized": {
+      "outputs": [
+        "results\\report_figures\\figure_2b_confusion_row_normalized.png",
+        "results\\report_figures\\figure_2b_confusion_row_normalized.svg",
+        "results\\report_figures\\figure_2b_confusion_row_normalized.pdf"
+      ],
+      "source_files": [
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\eeg_confusion_matrix.csv",
+          "sha256": "0042f486e098903fba5b5a70ee265a430559f197a97bbb0a6c43a21138228e77"
+        },
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\eeg_eog_emg_confusion_matrix.csv",
+          "sha256": "0042f486e098903fba5b5a70ee265a430559f197a97bbb0a6c43a21138228e77"
+        },
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\eeg_eog_emg_ecg_confusion_matrix.csv",
+          "sha256": "c08aa20a5c189c93696b31a3c964ddbfdd22515e2999d930fc0cdd3fec014058"
+        }
+      ]
+    },
+    "figure_3_incremental_modality_benefit": {
+      "outputs": [
+        "results\\report_figures\\figure_3_incremental_modality_benefit.png",
+        "results\\report_figures\\figure_3_incremental_modality_benefit.svg",
+        "results\\report_figures\\figure_3_incremental_modality_benefit.pdf"
+      ],
+      "source_files": [
+        {
+          "path": "results\\analysis\\posthoc_primary_84_v2\\paired_subject_bootstrap_intervals.csv",
+          "sha256": "f445f48c7b3df029a83d1d3df0e865b167995d53575112292aadbfe188b5ce4a"
+        }
+      ]
+    },
+    "figure_4_feature_selection_sensitivity": {
+      "outputs": [
+        "results\\report_figures\\figure_4_feature_selection_sensitivity.png",
+        "results\\report_figures\\figure_4_feature_selection_sensitivity.svg",
+        "results\\report_figures\\figure_4_feature_selection_sensitivity.pdf"
+      ],
+      "source_files": [
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\metrics.json",
+          "sha256": "5e0108075f31d38899dc6d1c7cc16f5f00298f477d2389de8d841c38699ec2e8"
+        },
+        {
+          "path": "results\\analysis\\posthoc_primary_84_v2\\harmonized_sensitivity_summary.csv",
+          "sha256": "f73ca48b348bb0ea8f277875ba4d3c2636adafbb6551fabe7cd9edc2394cbe74"
+        },
+        {
+          "path": "results\\analysis\\posthoc_primary_84_v2\\harmonized_sensitivity_oof_predictions.csv",
+          "sha256": "a2e18bfd49af4f730f4dd20e8f771f7db6ed24d9102d81dcd94e767310fbf14f"
+        }
+      ]
+    },
+    "figure_5_acquisition_diagnostics": {
+      "outputs": [
+        "results\\report_figures\\figure_5_acquisition_diagnostics.png",
+        "results\\report_figures\\figure_5_acquisition_diagnostics.svg",
+        "results\\report_figures\\figure_5_acquisition_diagnostics.pdf"
+      ],
+      "source_files": [
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\metrics.json",
+          "sha256": "5e0108075f31d38899dc6d1c7cc16f5f00298f477d2389de8d841c38699ec2e8"
+        },
+        {
+          "path": "results\\analysis\\posthoc_primary_84_v2\\acquisition_only_cv_by_fold.csv",
+          "sha256": "af6c2bc273a2e62c64a0b4e6b6cbe34e7e67c5bca86f9ee6390759097543b6b3"
+        },
+        {
+          "path": "results\\analysis\\posthoc_primary_84_v2\\acquisition_class_association.csv",
+          "sha256": "f617052a6e48175042c90549d8d20ea0e3d995ee0ff72888b2f8fc5eaea0e645"
+        },
+        {
+          "path": "results\\analysis\\posthoc_primary_84_v2\\acquisition_metadata_by_record.csv",
+          "sha256": "a7d1b694a934a4e7389c3314e4dd2704102298d061a64c4692626452daf3b581"
+        },
+        {
+          "path": "results\\analysis\\posthoc_primary_84_v2\\posthoc_report.json",
+          "sha256": "0ab0377827fc891aec5eb216324d72bfac0b12210d61a7a8a76a82e2e4441a05"
+        }
+      ]
+    },
+    "figure_6_missing_feature_patterns": {
+      "outputs": [
+        "results\\report_figures\\figure_6_missing_feature_patterns.png",
+        "results\\report_figures\\figure_6_missing_feature_patterns.svg",
+        "results\\report_figures\\figure_6_missing_feature_patterns.pdf"
+      ],
+      "source_files": [
+        {
+          "path": "results\\features\\physiology_primary_84_v2_candidate.csv.gz",
+          "sha256": "d00d5b0d02f87e12964c241ea04ec07f5ba16846604fb186a499e91851476373"
+        },
+        {
+          "path": "results\\analysis\\posthoc_primary_84_v2\\missingness_by_class_modality.csv",
+          "sha256": "4e91412d9ccdfb897fe28c64a8db2be18a9fddc47f0ca92005bd416fd5ab3fcc"
+        },
+        {
+          "path": "results\\qc\\primary_physiology_84_v2_preflight.json",
+          "sha256": "7627ee693915cdbc253ced3aab274a9ce29c995f9b6e366aea8111f213e42e42"
+        },
+        {
+          "path": "config\\analysis_cohorts\\primary_physiology_84_v2.json",
+          "sha256": "db2038b49551f7e2857f04889e414667c970be87ee119d3b9ea504ec82776b88"
+        }
+      ]
+    }
+  },
+  "tables": {
+    "cohort_characteristics.csv": {
+      "path": "cohort_characteristics.csv",
+      "source_files": [
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\metrics.json",
+          "sha256": "5e0108075f31d38899dc6d1c7cc16f5f00298f477d2389de8d841c38699ec2e8"
+        },
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\fold_assignments.csv",
+          "sha256": "f28f13ba269a1fa228861fbafa0794a22eeee753e363e0d298e415d586062ddb"
+        },
+        {
+          "path": "config\\analysis_cohorts\\primary_physiology_84_v2.json",
+          "sha256": "db2038b49551f7e2857f04889e414667c970be87ee119d3b9ea504ec82776b88"
+        },
+        {
+          "path": "config\\cohort_manifest.json",
+          "sha256": "b89ec56b223c1975eb6de9c482b98aef47e3ba269e329e26217a8b0d1a2cd88d"
+        }
+      ]
+    },
+    "primary_model_performance.csv": {
+      "path": "primary_model_performance.csv",
+      "source_files": [
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\metrics.json",
+          "sha256": "5e0108075f31d38899dc6d1c7cc16f5f00298f477d2389de8d841c38699ec2e8"
+        },
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\fold_assignments.csv",
+          "sha256": "f28f13ba269a1fa228861fbafa0794a22eeee753e363e0d298e415d586062ddb"
+        },
+        {
+          "path": "config\\analysis_cohorts\\primary_physiology_84_v2.json",
+          "sha256": "db2038b49551f7e2857f04889e414667c970be87ee119d3b9ea504ec82776b88"
+        },
+        {
+          "path": "config\\cohort_manifest.json",
+          "sha256": "b89ec56b223c1975eb6de9c482b98aef47e3ba269e329e26217a8b0d1a2cd88d"
+        }
+      ]
+    },
+    "paired_statistical_comparisons.csv": {
+      "path": "paired_statistical_comparisons.csv",
+      "source_files": [
+        {
+          "path": "results\\analysis\\posthoc_primary_84_v2\\paired_subject_bootstrap_intervals.csv",
+          "sha256": "f445f48c7b3df029a83d1d3df0e865b167995d53575112292aadbfe188b5ce4a"
+        },
+        {
+          "path": "results\\analysis\\posthoc_primary_84_v2\\mcnemar_exact_tests.csv",
+          "sha256": "35979dcac1d3cc5d7d7042b4b637b26441a04001d13ce7e6a33a9986ffe039ff"
+        },
+        {
+          "path": "results\\analysis\\posthoc_primary_84_v2\\participant_correctness_changes.csv",
+          "sha256": "b58aa271ed44a08475c23348a9c1a548ccf6bf4469bbd76db990f3f2d27e6683"
+        }
+      ]
+    },
+    "sensitivity_analyses.csv": {
+      "path": "sensitivity_analyses.csv",
+      "source_files": [
+        {
+          "path": "results\\models\\primary_physiology_84_v2\\metrics.json",
+          "sha256": "5e0108075f31d38899dc6d1c7cc16f5f00298f477d2389de8d841c38699ec2e8"
+        },
+        {
+          "path": "results\\analysis\\posthoc_primary_84_v2\\harmonized_sensitivity_summary.csv",
+          "sha256": "f73ca48b348bb0ea8f277875ba4d3c2636adafbb6551fabe7cd9edc2394cbe74"
+        },
+        {
+          "path": "results\\analysis\\posthoc_primary_84_v2\\harmonized_sensitivity_oof_predictions.csv",
+          "sha256": "a2e18bfd49af4f730f4dd20e8f771f7db6ed24d9102d81dcd94e767310fbf14f"
+        }
+      ]
+    }
+  },
+  "xlsx_export": "not generated: neither openpyxl nor xlsxwriter is installed",
+  "source_hashes": {
+    "metrics": {
+      "path": "results\\models\\primary_physiology_84_v2\\metrics.json",
+      "sha256": "5e0108075f31d38899dc6d1c7cc16f5f00298f477d2389de8d841c38699ec2e8"
+    },
+    "assignments": {
+      "path": "results\\models\\primary_physiology_84_v2\\fold_assignments.csv",
+      "sha256": "f28f13ba269a1fa228861fbafa0794a22eeee753e363e0d298e415d586062ddb"
+    },
+    "features": {
+      "path": "results\\features\\physiology_primary_84_v2_candidate.csv.gz",
+      "sha256": "d00d5b0d02f87e12964c241ea04ec07f5ba16846604fb186a499e91851476373"
+    },
+    "preflight": {
+      "path": "results\\qc\\primary_physiology_84_v2_preflight.json",
+      "sha256": "7627ee693915cdbc253ced3aab274a9ce29c995f9b6e366aea8111f213e42e42"
+    },
+    "posthoc_report": {
+      "path": "results\\analysis\\posthoc_primary_84_v2\\posthoc_report.json",
+      "sha256": "0ab0377827fc891aec5eb216324d72bfac0b12210d61a7a8a76a82e2e4441a05"
+    },
+    "missingness": {
+      "path": "results\\analysis\\posthoc_primary_84_v2\\missingness_by_class_modality.csv",
+      "sha256": "4e91412d9ccdfb897fe28c64a8db2be18a9fddc47f0ca92005bd416fd5ab3fcc"
+    },
+    "harmonized_summary": {
+      "path": "results\\analysis\\posthoc_primary_84_v2\\harmonized_sensitivity_summary.csv",
+      "sha256": "f73ca48b348bb0ea8f277875ba4d3c2636adafbb6551fabe7cd9edc2394cbe74"
+    },
+    "harmonized_predictions": {
+      "path": "results\\analysis\\posthoc_primary_84_v2\\harmonized_sensitivity_oof_predictions.csv",
+      "sha256": "a2e18bfd49af4f730f4dd20e8f771f7db6ed24d9102d81dcd94e767310fbf14f"
+    },
+    "bootstrap": {
+      "path": "results\\analysis\\posthoc_primary_84_v2\\paired_subject_bootstrap_intervals.csv",
+      "sha256": "f445f48c7b3df029a83d1d3df0e865b167995d53575112292aadbfe188b5ce4a"
+    },
+    "mcnemar": {
+      "path": "results\\analysis\\posthoc_primary_84_v2\\mcnemar_exact_tests.csv",
+      "sha256": "35979dcac1d3cc5d7d7042b4b637b26441a04001d13ce7e6a33a9986ffe039ff"
+    },
+    "correctness_changes": {
+      "path": "results\\analysis\\posthoc_primary_84_v2\\participant_correctness_changes.csv",
+      "sha256": "b58aa271ed44a08475c23348a9c1a548ccf6bf4469bbd76db990f3f2d27e6683"
+    },
+    "acquisition_folds": {
+      "path": "results\\analysis\\posthoc_primary_84_v2\\acquisition_only_cv_by_fold.csv",
+      "sha256": "af6c2bc273a2e62c64a0b4e6b6cbe34e7e67c5bca86f9ee6390759097543b6b3"
+    },
+    "acquisition_associations": {
+      "path": "results\\analysis\\posthoc_primary_84_v2\\acquisition_class_association.csv",
+      "sha256": "f617052a6e48175042c90549d8d20ea0e3d995ee0ff72888b2f8fc5eaea0e645"
+    },
+    "acquisition_metadata": {
+      "path": "results\\analysis\\posthoc_primary_84_v2\\acquisition_metadata_by_record.csv",
+      "sha256": "a7d1b694a934a4e7389c3314e4dd2704102298d061a64c4692626452daf3b581"
+    },
+    "cohort": {
+      "path": "config\\analysis_cohorts\\primary_physiology_84_v2.json",
+      "sha256": "db2038b49551f7e2857f04889e414667c970be87ee119d3b9ea504ec82776b88"
+    },
+    "source_manifest": {
+      "path": "config\\cohort_manifest.json",
+      "sha256": "b89ec56b223c1975eb6de9c482b98aef47e3ba269e329e26217a8b0d1a2cd88d"
+    },
+    "predictions_eeg": {
+      "path": "results\\models\\primary_physiology_84_v2\\eeg_oof_predictions.csv",
+      "sha256": "d22aa08413ab56100aa41728cf056ff82264427e39c3ab639f7f79e43650f19d"
+    },
+    "confusion_eeg": {
+      "path": "results\\models\\primary_physiology_84_v2\\eeg_confusion_matrix.csv",
+      "sha256": "0042f486e098903fba5b5a70ee265a430559f197a97bbb0a6c43a21138228e77"
+    },
+    "predictions_eeg_eog_emg": {
+      "path": "results\\models\\primary_physiology_84_v2\\eeg_eog_emg_oof_predictions.csv",
+      "sha256": "d22aa08413ab56100aa41728cf056ff82264427e39c3ab639f7f79e43650f19d"
+    },
+    "confusion_eeg_eog_emg": {
+      "path": "results\\models\\primary_physiology_84_v2\\eeg_eog_emg_confusion_matrix.csv",
+      "sha256": "0042f486e098903fba5b5a70ee265a430559f197a97bbb0a6c43a21138228e77"
+    },
+    "predictions_eeg_eog_emg_ecg": {
+      "path": "results\\models\\primary_physiology_84_v2\\eeg_eog_emg_ecg_oof_predictions.csv",
+      "sha256": "b3485141ca77cfbfeadda7dde2b83043b374f13796b01f61a03b7b6f06947203"
+    },
+    "confusion_eeg_eog_emg_ecg": {
+      "path": "results\\models\\primary_physiology_84_v2\\eeg_eog_emg_ecg_confusion_matrix.csv",
+      "sha256": "c08aa20a5c189c93696b31a3c964ddbfdd22515e2999d930fc0cdd3fec014058"
+    },
+    "cohort_config": {
+      "path": "config\\analysis_cohorts\\primary_physiology_84_v2.json",
+      "sha256": "db2038b49551f7e2857f04889e414667c970be87ee119d3b9ea504ec82776b88"
+    }
+  },
+  "software": {
+    "python": "3.13.2",
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "matplotlib": "3.11.2",
+    "seaborn": "0.13.2"
+  }
+}

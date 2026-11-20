@@ -1,0 +1,5 @@
+diagnostic_group,recordings,percentage_of_84_recording_cohort,excluded_from_original_88_count,excluded_recordings_and_reasons
+Healthy controls,12,14.285714285714286,4,"n13: Official EDF has blank physical-dimension fields for every physiological channel; units cannot be verified.; n14: Official EDF has blank physical-dimension fields for every physiological channel; units cannot be verified.; n15: Official EDF has blank physical-dimension fields for every physiological channel; units cannot be verified.; n16: The EDF contains EEG channels only; EMG, EOG, and ECG are unavailable, so it cannot enter matched four-modality experiments."
+NFLE,40,47.61904761904762,0,None
+RBD,22,26.19047619047619,0,None
+PLM,10,11.904761904761905,0,None

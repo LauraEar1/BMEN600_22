@@ -1,0 +1,4 @@
+models_compared,balanced_accuracy_difference_second_minus_first,balanced_accuracy_95_ci_low,balanced_accuracy_95_ci_high,macro_f1_difference_second_minus_first,macro_f1_95_ci_low,macro_f1_95_ci_high,mcnemar_exact_two_sided_p_unadjusted,participants_corrected_by_second_model,participants_regressed_by_second_model,analysis
+EEG vs EEG + EMG + EOG,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0,0,Exploratory; paired subject bootstrap; p-values unadjusted
+EEG + EMG + EOG vs EEG + EMG + EOG + ECG,0.07083333333333341,0.0,0.14583333333333337,0.06039809863339274,0.0,0.135657513892412,0.25,3,0,Exploratory; paired subject bootstrap; p-values unadjusted
+EEG vs EEG + EMG + EOG + ECG,0.07083333333333341,0.0,0.14583333333333337,0.06039809863339274,0.0,0.1362859641137819,0.25,3,0,Exploratory; paired subject bootstrap; p-values unadjusted

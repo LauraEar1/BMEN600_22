@@ -1,0 +1,72 @@
+{
+  "analysis_id": "primary_physiology_85_v1",
+  "version": 1,
+  "status": "provisional_pending_eligibility",
+  "description": "Provisional primary physiology cohort derived from the verified 88-record CAP Sleep Database manifest.",
+  "source_manifest": "config/cohort_manifest.json",
+  "source_inventory_sha256": "b794825833c98285c6e9f6052af79837afc1ac1939f7e410fdfc88dded52f945",
+  "included_record_ids": [
+    "n1", "n2", "n3", "n4", "n5", "n6", "n7", "n8", "n9", "n10", "n11", "n12", "n16",
+    "nfle1", "nfle2", "nfle3", "nfle4", "nfle5", "nfle6", "nfle7", "nfle8", "nfle9", "nfle10",
+    "nfle11", "nfle12", "nfle13", "nfle14", "nfle15", "nfle16", "nfle17", "nfle18", "nfle19", "nfle20",
+    "nfle21", "nfle22", "nfle23", "nfle24", "nfle25", "nfle26", "nfle27", "nfle28", "nfle29", "nfle30",
+    "nfle31", "nfle32", "nfle33", "nfle34", "nfle35", "nfle36", "nfle37", "nfle38", "nfle39", "nfle40",
+    "rbd1", "rbd2", "rbd3", "rbd4", "rbd5", "rbd6", "rbd7", "rbd8", "rbd9", "rbd10", "rbd11",
+    "rbd12", "rbd13", "rbd14", "rbd15", "rbd16", "rbd17", "rbd18", "rbd19", "rbd20", "rbd21", "rbd22",
+    "plm1", "plm2", "plm3", "plm4", "plm5", "plm6", "plm7", "plm8", "plm9", "plm10"
+  ],
+  "excluded_records": [
+    {
+      "record_id": "n13",
+      "reason": "Official EDF has blank physical-dimension fields for every physiological channel; units cannot be verified.",
+      "evidence": "results/qc/edf_header_unit_checksum_audit.csv",
+      "published_sha256_verified": "12fc77e1ee74f14a5375b1c08033f08debba2b4e485313da7cfe9f304b68a131"
+    },
+    {
+      "record_id": "n14",
+      "reason": "Official EDF has blank physical-dimension fields for every physiological channel; units cannot be verified.",
+      "evidence": "results/qc/edf_header_unit_checksum_audit.csv",
+      "published_sha256_verified": "e25af1fa67562d5e7661bc45c201ec98fde5089866f192cd4b1abd759f5ab521"
+    },
+    {
+      "record_id": "n15",
+      "reason": "Official EDF has blank physical-dimension fields for every physiological channel; units cannot be verified.",
+      "evidence": "results/qc/edf_header_unit_checksum_audit.csv",
+      "published_sha256_verified": "4681ca4d55bd15540b1bd855d22b63f9b44b2a22e45dac9870379a292b540159"
+    }
+  ],
+  "expected_class_counts": {
+    "control": 13,
+    "nfle": 40,
+    "rbd": 22,
+    "plm": 10
+  },
+  "eligibility": {
+    "required_modalities": ["eeg", "emg", "eog", "ecg"],
+    "required_qc_status": "complete",
+    "allow_excluded_required_channels": false,
+    "allow_missing_modalities": false,
+    "window_seconds": 30
+  },
+  "subject_feature_aggregation": {
+    "unit_of_analysis": "one independent subject/recording",
+    "window_observations_are_independent_participants": false,
+    "included_windows": "complete 30-second windows that are non-flat and not on a QC-excluded channel",
+    "statistics": ["median", "interquartile_range"],
+    "interquartile_range": "75th percentile minus 25th percentile"
+  },
+  "primary_model": {
+    "models": ["eeg", "eeg_emg_eog", "eeg_emg_eog_ecg"],
+    "folds": 5,
+    "splitter": "StratifiedGroupKFold",
+    "group": "subject_id",
+    "random_seed": 42,
+    "classifier": "RandomForestClassifier",
+    "trees": 500,
+    "class_weight": "balanced_subsample",
+    "imputation": "median, fit only on each training fold",
+    "feature_selection": "none",
+    "hyperparameter_tuning": "none",
+    "cap_annotations_as_features": false
+  }
+}
